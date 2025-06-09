@@ -1,0 +1,67 @@
+{
+  "id": "com.bicomsystems.teamsplugin",
+  "command": "/app/bin/run.sh",
+  "separate-locales": false,
+  "sdk": "org.freedesktop.Sdk",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "24.08",
+  "base": "org.electronjs.Electron2.BaseApp",
+  "base-version": "24.08",
+  "finish-args": [
+    "--device=all",
+    "--filesystem=home",
+    "--share=ipc",
+    "--share=network",
+    "--talk-name=org.freedesktop.Notifications",
+    "--talk-name=org.gtk.Notifications",
+    "--talk-name=org.kde.StatusNotifierWatcher"
+  ],
+  "modules": [
+    {
+      "name": "teamsplugin",
+      "sources": [
+        {
+          "type": "file",
+          "url": "https://downloads.bicomsystems.com/teams/releases/communicator/7.5/latest/CommunicatorforTeamsPlugin-7.5.0-beta.deb",
+          "dest-filename": "communicator-for-teams-plugin.deb",
+          "sha256": "bd86af081e5e6b0730b4d86bf56f78779ff2056f3bba8f97b737d32e87ffdf2a"
+        },
+        {
+          "type": "file",
+          "path": "com.bicomsystems.teamsplugin.desktop"
+        },
+        {
+          "type": "file",
+          "path": "com.bicomsystems.teamsplugin.png"
+        },
+        {
+          "type": "file",
+          "path": "com.bicomsystems.teamsplugin.metainfo.xml"
+        },
+        {
+          "type": "script",
+          "dest-filename": "run.sh",
+          "commands": [
+            "/app/bin/zypak-wrapper.sh /app/communicator-for-teams-plugin/communicator-for-teams-plugin"
+          ]
+        }
+      ],
+      "buildsystem": "simple",
+      "build-commands": [
+        "ar x communicator-for-teams-plugin.deb",
+        "mkdir /app/communicator-for-teams-plugin",
+        "tar xf data.tar.xz --strip-components=3 -C /app/communicator-for-teams-plugin",
+        "rm -Rf communicator-for-teams-plugin.deb control.tar.gz data.tar.xz debian-binary",
+        "chmod -R 755 /app/communicator-for-teams-plugin",
+        "mv run.sh /app/bin/run.sh",
+        "chmod +x /app/bin/run.sh"
+      ],
+      "post-install": [
+        "install -Dm644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml",
+        "install -Dm644 ${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop",
+        "install -Dm644 ${FLATPAK_ID}.png /app/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png",
+        "install -Dm644 ${FLATPAK_ID}.png /app/usr/share/icons/${FLATPAK_ID}.png"
+      ]
+    }
+  ]
+}

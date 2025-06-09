@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.bicomsystems.teamsplugin</id>
+  <name>Communicator for Teams Plugin</name>
+  <project_license>GPL-3.0+</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <summary>Communicator for Teams Plugin</summary>
+  <developer id="com.bicomsystems">
+    <name>Bicom Systems</name>
+  </developer>
+  <description>
+    <p>
+      Communicator for Teams Plugin, a fully featured, easy to use Teams Plugin for Linux.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">com.bicomsystems.teamsplugin.desktop</launchable>
+
+  <url type="homepage">https://www.bicomsystems.com/</url>
+  <url type="bugtracker">https://www.bicomsystems.com/</url>
+  <url type="help">https://www.bicomsystems.com/</url>
+
+  <provides>
+    <binary>teamsplugin</binary>
+  </provides>
+
+  <releases>
+    <release version="7.5.0-beta" date="2025-05-28" />
+  </releases>
+
+  <content_rating type="oars-1.1" />
+</component>

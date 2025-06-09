@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Communicator for Teams Plugin
+Comment=Unified Communications Plugin for Microsoft Teams
+Type=Application
+Exec=/app/bin/run.sh
+Icon=com.bicomsystems.teamsplugin
+StartupWMClass=Communicator for Teams Plugin
+StartupNotify=false
+Terminal=false
+Categories=Utility;

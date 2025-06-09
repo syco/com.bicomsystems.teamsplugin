@@ -1,1 +1,1 @@
-# com.bicomsystems.teamsplugin
+## Communicator for Teams Plugin
