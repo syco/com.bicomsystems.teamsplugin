@@ -1,17 +1,16 @@
 {
   "id": "com.bicomsystems.teamsplugin",
-  "command": "/app/bin/run.sh",
+  "command": "/app/run.sh",
   "separate-locales": false,
   "sdk": "org.freedesktop.Sdk",
   "runtime": "org.freedesktop.Platform",
   "runtime-version": "24.08",
-  "base": "org.electronjs.Electron2.BaseApp",
-  "base-version": "24.08",
   "finish-args": [
     "--device=all",
     "--filesystem=home",
     "--share=ipc",
     "--share=network",
+    "--socket=x11",
     "--talk-name=org.freedesktop.Notifications",
     "--talk-name=org.gtk.Notifications",
     "--talk-name=org.kde.StatusNotifierWatcher"
@@ -42,7 +41,7 @@
           "type": "script",
           "dest-filename": "run.sh",
           "commands": [
-            "/app/bin/zypak-wrapper.sh /app/communicator-for-teams-plugin/communicator-for-teams-plugin"
+            "/app/communicator-for-teams-plugin/communicator-for-teams-plugin --no-sandbox"
           ]
         }
       ],
@@ -53,8 +52,8 @@
         "tar xf data.tar.xz --strip-components=3 -C /app/communicator-for-teams-plugin",
         "rm -Rf communicator-for-teams-plugin.deb control.tar.gz data.tar.xz debian-binary",
         "chmod -R 755 /app/communicator-for-teams-plugin",
-        "mv run.sh /app/bin/run.sh",
-        "chmod +x /app/bin/run.sh"
+        "mv run.sh /app/run.sh",
+        "chmod +x /app/run.sh"
       ],
       "post-install": [
         "install -Dm644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml",
