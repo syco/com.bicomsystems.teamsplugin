@@ -22,9 +22,9 @@
       "sources": [
         {
           "type": "file",
-          "url": "https://downloads.bicomsystems.com/teams/releases/communicator/7.5/latest/CommunicatorforTeamsPlugin-7.5.0-beta.deb",
+          "url": "https://downloads.bicomsystems.com/teams/releases/communicator/7.5/latest/CommunicatorforTeamsPlugin-7.5.1-beta.deb",
           "dest-filename": "communicator-for-teams-plugin.deb",
-          "sha256": "bd86af081e5e6b0730b4d86bf56f78779ff2056f3bba8f97b737d32e87ffdf2a"
+          "sha256": "7b85dcd5792a6bfe705610b08acea06e2b9202493ec048e21726f39b7ad6cc94"
         },
         {
           "type": "file",
@@ -52,7 +52,7 @@
         "mkdir /app/communicator-for-teams-plugin",
         "tar xf data.tar.xz --strip-components=3 -C /app/communicator-for-teams-plugin",
         "rm -Rf communicator-for-teams-plugin.deb control.tar.gz data.tar.xz debian-binary",
-        "chmod -R 755 /app/communicator-for-teams-plugin",
+        "chmod 755 /app/communicator-for-teams-plugin/communicator-for-teams-plugin",
         "mv run.sh /app/run.sh",
         "chmod +x /app/run.sh"
       ],
